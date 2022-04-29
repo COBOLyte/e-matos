@@ -1,0 +1,26 @@
+
+
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar-brand {
+    margin-left: 1rem;
+  }
+
+.navbar-end {
+    margin-right: 1rem;
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+.order-num {
+    font-weight: bold;
+}

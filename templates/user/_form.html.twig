@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+    <label>Email</label>
+    {{ form_row(form.email) }}
+    <label>Mot de passe</label>
+    {{ form_row(form.password) }}
+    <label>Prénom</label>
+    {{ form_row(form.firstName) }}
+    <label>Nom</label>
+    {{ form_row(form.lastName) }}
+    <label>Téléphone</label>
+    {{ form_row(form.phone) }}
+    <label>Adresse</label>
+    {{ form_row(form.address) }}
+    <label>Code postal</label>
+    {{ form_row(form.zipCode) }}
+    <label>Ville</label>
+    {{ form_row(form.city) }}
+    <label>Pays</label>
+    {{ form_row(form.country) }}
+    
+    <button class="btn btn-primary mt-2">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

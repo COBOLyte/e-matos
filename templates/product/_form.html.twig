@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+    <label>Nom</label>
+    {{ form_row(form.name) }}
+    <label>Description</label>
+    {{ form_row(form.description) }}
+    <label>Prix</label>
+    {{ form_row(form.priceHT) }}
+    <label>Disponibilité</label>
+    {{ form_row(form.available) }}
+    <label>Chemin vers l'image</label>
+    {{ form_row(form.imagePath) }}
+    <label>Catégorie</label>
+    {{ form_row(form.categoryId) }}
+    <button class="btn btn-primary mt-2">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

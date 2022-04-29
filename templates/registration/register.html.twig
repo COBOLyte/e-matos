@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>S'inscrire</h1>
+
+    {{ form_start(registrationForm) }}
+        <label>E-mail</label>
+        {{ form_row(registrationForm.email) }}
+        <label>Mot de passe</label>
+        {{ form_row(registrationForm.password) }}
+        <label>Prénom</label>
+        {{ form_row(registrationForm.firstName) }}
+        <label>Nom</label>
+        {{ form_row(registrationForm.lastName) }}
+        <label>Téléphone</label>
+        {{ form_row(registrationForm.phone) }}
+        <label>Adresse</label>
+        {{ form_row(registrationForm.address) }}
+        <label>Code postal</label>
+        {{ form_row(registrationForm.zipCode) }}
+        <label>Ville</label>
+        {{ form_row(registrationForm.city) }}
+        <label>Pays</label>
+        {{ form_row(registrationForm.country) }}
+        <label>Accord des conditions</label>
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn btn-primary mt-2">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}

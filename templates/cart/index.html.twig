@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table align-middle">
+        <thead>
+            <tr>
+                <th>Panier</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set total = 0 %}
+        {% for pI in products_added %}
+            {% set total = total + (pI.product.priceHT * pI.quantity) %}
+            <tr>
+                <td>
+                    <img src="{{ pI.product.imagePath }}" width="150" height="100">
+                </td>
+                <td>{{ pI.product.name }}</td>
+                <td>x{{ pI.quantity }}</td>
+                <td>{{ pI.product.priceHT * pI.quantity }}€</td>
+                <td>
+                    <a href="{{ path('app_cart_removeProduct', {'id': pI.id}) }}">
+                        <button type="button" class="btn btn-outline-danger">X</button>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Le panier est vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>TOTAL</th>
+                <td>{{ total }}€</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    {% if products_added|length > 0 %}
+        <a href="{{ path('app_order_new') }}">
+            <button type="button" class="btn btn-outline-warning">Passer commande</button>
+        </a>
+    {% endif %}
+{% endblock %}

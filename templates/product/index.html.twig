@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table">
+        <tbody>
+        {% for product in products %}
+            <tr class="align-middle">
+                <td>
+                    <img src="{{ product.imagePath }}" width="250" height="200">
+                </td>
+                <td>
+                    <span class="product-name">{{ product.name }}</span>
+                    <p>{{ product.description }}</p>
+                </td>
+                <td>{{ product.priceHT }}€</td>
+                <form action="{{ path('app_cart_addProduct', {'id': product.id}) }}" method="post">
+                    <td>
+                        <input type="number" name="quantity" min="1" value="1">
+                    </td>
+                    <td>
+                        <button type="button submit" class="btn btn-outline-dark">+</button>
+                    </td>
+                </form>
+                <td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_product_edit', {'id': product.id}) }}">
+                            <button type="button" class="btn btn-primary">Modifier</button>
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun produits trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('app_product_new') }}">
+            <button type="button" class="btn btn-success">Créer nouveau produit</button>
+        </a>
+    {% endif %}
+{% endblock %}

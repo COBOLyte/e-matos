@@ -1,0 +1,5 @@
+{{ form_start(form) }}
+    <label>Nom</label>
+    {{ form_row(form.name) }}
+    <button class="btn btn-primary mt-2">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

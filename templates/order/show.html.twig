@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table align-middle">
+        <tbody>
+        {% set total = 0 %}
+        {% for pI in order.getProductItems() %}
+            {% set total = total + (pI.product.priceHT * pI.quantity) %}
+            <tr>
+                <td><img src="{{ pI.product.imagePath }}" width="150" height="100"></td>
+                <td>{{ pI.product.name }}</td>
+                <td>x{{ pI.quantity }}</td>
+                <td>{{ pI.product.priceHT * pI.quantity }}€</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>TOTAL</th>
+                <td>{{ total }}€</td>
+            </tr>
+            <tr>
+                <th>Commandé(s) le</th>
+                <td>{{ order.dateTime ? order.dateTime|date('d-m-Y') : '' }}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <a href="{{ path('app_order_index') }}">
+        <button type="button" class="btn btn-secondary mt-2">Retour à mes commandes</button>
+    </a>
+{% endblock %}

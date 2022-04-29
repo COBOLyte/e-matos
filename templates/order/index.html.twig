@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mes commandes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, order in orders %}
+            <tr>
+                <td class="order-num">Commande #{{ key + 1 }}</td>
+                <td>{{ order.dateTime ? order.dateTime|date('d/m/Y') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_order_show', {'id': order.id}) }}">
+                        <button class="btn btn-outline-info text-dark">>></button>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucune commandes trouvées</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
